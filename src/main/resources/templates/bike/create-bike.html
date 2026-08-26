@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+<div>
+    <!--    HEADER SECTION -->
+    <header class="h-16 flex shadow-lg items-center">
+        <nav class="flex justify-between w-full px-6">
+            <div class="flex items-center">
+                <p class="text-xl font-semibold"><a href="/"> Pedal </a></p>
+            </div>
+
+            <ul class="flex">
+                <li class="mr-8 flex items-center ">
+                    <p class="text-base"><a href="/"> Contact Support </a></p>
+                </li>
+
+                <li class="mr-8 flex items-center">
+                    <p class="text-base"><a href="/"> Try Bikes </a></p>
+                </li>
+
+                <li>
+                    <a href="/login">
+                        <button class="bg-[#3C5924;] px-6 h-12 rounded text-[#fff]">
+                            Sign Out
+                        </button>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div>
+        <aside id="default-sidebar"
+               class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
+               aria-label="Sidebar">
+            <div class="h-full px-3 py-4 overflow-y-auto bg-[#FBF9E9]">
+                <div class="flex text-xl mb-6 font-bold items-center p-2 text-gray-900 rounded-lg">
+                    <span class="ml-3 mb-2">
+                        <a href="/dashboard">
+                            Pedal Console
+                        </a>
+                    </span>
+                    <hr/>
+                </div>
+
+                <ul class="space-y-2 font-medium">
+                    <li>
+                        <a href="/dashboard"
+                           class="flex items-center p-2 text-gray-900 rounded-lg text-white bg-[#3C5924;]">
+                            <span class="flex-1 ml-3 whitespace-nowrap">Bikes</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/employees"
+                           class="flex items-center p-2 text-gray-900 rounded-lg hover:text-white hover:bg-[#3C5924;]">
+                            <span class="flex-1 ml-3 whitespace-nowrap">All Employees</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/customers"
+                           class="flex items-center p-2 text-gray-900 rounded-lg hover:text-white hover:bg-[#3C5924;]">
+                            <span class="flex-1 ml-3 whitespace-nowrap">Customers</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/orders"
+                           class="flex items-center p-2 text-gray-900 rounded-lg hover:text-white hover:bg-[#3C5924;]">
+                            <span class="flex-1 ml-3 whitespace-nowrap">Customer Orders</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+
+        <div class="p-4 sm:ml-64">
+            <div>
+                <div class="flex mb-4 justify-between">
+                    <div class="flex items-center">
+                        <p class="text-2xl font-semibold"> Post A Bike </p>
+                    </div>
+
+                    <a href="/dashboard">
+                        <button class="bg-[#757872;] px-6 h-12 rounded text-[#fff]">
+                            Cancel
+                        </button>
+                    </a>
+                </div>
+
+                <hr/>
+
+                <form
+                        th:action="@{/create-bike}" th:object="${bike}"
+                        class="space-y-4 md:space-y-6 mt-6" method="POST">
+                    <div>
+                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Bike Name</label>
+                        <input
+                                th:field="*{name}"
+                                type="text" name="name" id="name"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                                placeholder="E.g Harley"
+                                required=""
+                        >
+                        <p
+                                th:if="${#fields.hasErrors('name')}"
+                                th:class="${#fields.hasErrors('name')}? 'mt-2 text-[red]'"
+                        > Invalid Bike Name </p>
+                    </div>
+
+                    <div>
+                        <label for="model" class="block mb-2 text-sm font-medium text-gray-900">Bike Model</label>
+                        <input
+                                th:field="*{model}"
+                                type="text" name="model" id="model"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                                placeholder="E.g 1992 v2" required="">
+                        <p
+                                th:if="${#fields.hasErrors('model')}"
+                                th:class="${#fields.hasErrors('model')}? 'mt-2 text-[red]'"
+                        > Invalid Bike Model </p>
+                    </div>
+
+                    <div>
+                        <label for="price" class="block mb-2 text-sm font-medium text-gray-900">Bike Price</label>
+
+                        <input
+                                type="number" min="0" name="price" id="price"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                                placeholder="E.g $20.00" required="">
+                    </div>
+
+                    <div>
+                        <label for="warranty_status" class="block mb-2 text-sm font-medium text-gray-900">Bike Warranty
+                            Status</label>
+
+                        <select
+                                th:field="*{warranty_status}"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                                id="warranty_status">
+                            <option value="covered"> Covered</option>
+                            <option value="expired"> Expired</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="picture" class="block mb-2 text-sm font-medium text-gray-900">Bike Picture</label>
+                        <input
+                                th:field="*{image}"
+                                type="file" name="name" id="picture"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5">
+                    </div>
+
+                    <br/>
+
+                    <button type="submit"
+                            class="w-full text-white bg-[#3C5924;] hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                        Post Bike For Sale
+                    </button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Petals Commerce </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+<div>
+    <!--    HEADER SECTION -->
+    <header class="h-16 flex items-center max-w-[1200px] m-auto">
+        <nav class="flex justify-between w-full px-6">
+            <div class="flex items-center">
+                <p class="text-xl font-semibold"><a href="/"> Petals </a></p>
+            </div>
+
+            <ul class="flex">
+                <li class="mr-8 flex items-center ">
+                    <p class="text-base"><a href="/customer-support"> Contact Support </a></p>
+                </li>
+
+                <li class="mr-8 flex items-center">
+                    <p class="text-base"><a href="/"> Try Bikes </a></p>
+                </li>
+
+                <li class="mr-8 flex items-center" sec:authorize="isAuthenticated()">
+                    <p class="text-base">
+                        <a href="/profile">
+                            Profile
+                        </a>
+                    </p>
+                </li>
+
+                <li sec:authorize="isAuthenticated()">
+                    <a href="/login">
+                        <button class="bg-[#3C5924;] px-6 h-12 rounded text-[#fff]">
+                            Signout
+                        </button>
+                    </a>
+                </li>
+
+                <li sec:authorize="!isAuthenticated()">
+                    <a href="/login">
+                        <button class="bg-[#3C5924;] px-6 h-12 rounded text-[#fff]">
+                            Management Console
+                        </button>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!--    HERO SECTION -->
+    <section class="bg-[#FBF9E9] h-[350px]">
+        <div class="flex px-6 max-w-[1200px] m-auto h-full items-center">
+            <div>
+                <div class="text-4xl mb-4 font-semibold">
+                    <span class="font-light ml-1">
+                        Hello
+                    </span>
+
+                    <span sec:authentication="name">
+                    </span>
+                </div>
+
+                <p class="text-xl mb-4">
+                    Petal provides you with reliable bikes that you can trust.
+                </p>
+
+                <a href="/">
+                    <button class="bg-[#3C5924;] px-6 h-12 rounded text-[#fff]">
+                        View Available Bikes
+                    </button>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="max-w-[1200px] m-auto mt-8 px-4" >
+        <div>
+            <div class="flex items-center mb-6">
+                <p class="text-2xl font-semibold"> Your Orders </p>
+            </div>
+            <hr/>
+            <br/>
+
+            <div class="relative overflow-x-auto">
+                <table class="w-full text-sm text-left text-gray-500">
+                    <thead class="text-lg text-[#fff] uppercase bg-[#757872]">
+                    <tr>
+                        <th scope="col" class="px-6 py-3">
+                            Order ID
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Product ID
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Customer ID
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Date Created
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr th:each="order: ${orders}" class="bg-white border-b">
+                        <th th:text="'#'+${order.id}" scope="row "
+                            class="px-6 py-4 font-medium italic text-gray-900 whitespace-nowrap">
+
+                        </th>
+                        <td th:text="${order.productId}" class="px-6 py-4">
+                        </td>
+                        <td th:text="${order.customerId}" class="px-6 py-4">
+                        </td>
+                        <td th:text="${order.dateCreated}" class="px-6 py-4">
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</div>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Petals | Dashboard </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=nunito" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+<div>
+    <!--    HEADER SECTION -->
+    <header class="h-16 flex shadow-lg items-center">
+        <nav class="flex justify-between w-full px-6">
+            <div class="flex items-center">
+                <p class="text-xl font-semibold"><a href="/"> E-Bikes </a></p>
+            </div>
+
+            <ul class="flex">
+                <li class="mr-8 flex items-center ">
+                    <p class="text-base"><a href="/"> Contact Support </a></p>
+                </li>
+
+                <li class="mr-8 flex items-center">
+                    <p class="text-base"><a href="/"> Try Bikes </a></p>
+                </li>
+
+                <li>
+                    <a href="/login">
+                        <button class="bg-[#3C5924;] px-6 h-12 rounded text-[#fff]">
+                            Sign Out
+                        </button>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div>
+        <aside id="default-sidebar"
+               class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
+               aria-label="Sidebar">
+            <div class="h-full px-3 py-4 overflow-y-auto bg-[#FBF9E9]">
+                <div class="flex text-xl mb-6 font-bold items-center p-2 text-gray-900 rounded-lg">
+                    <span class="ml-3 mb-2">
+                        <a href="/dashboard">
+                            Petals Console
+                        </a>
+                    </span>
+                    <hr/>
+                </div>
+
+                <ul class="space-y-2 font-medium">
+                    <li>
+                        <a href="#"
+                           class="flex items-center p-2 text-gray-900 rounded-lg text-white bg-[#3C5924;]">
+                            <span class="flex-1 ml-3 whitespace-nowrap">Bikes</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/dashboard/users"
+                           class="flex items-center p-2 text-gray-900 rounded-lg hover:text-white hover:bg-[#3C5924;]">
+                            <span class="flex-1 ml-3 whitespace-nowrap">All Users</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/dashboard/orders"
+                           class="flex items-center p-2 text-gray-900 rounded-lg hover:text-white hover:bg-[#3C5924;]">
+                            <span class="flex-1 ml-3 whitespace-nowrap">Customer Orders</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+
+        <div class="p-4 sm:ml-64">
+            <div class="flex justify-between">
+                <div class="flex items-center">
+                    <p th:text="'Showing All ' + ${bikes.size()} + ' Bikes'"></p>
+                </div>
+
+                <a href="/dashboard/bike/create-bike">
+                    <button class="bg-[#3C5924;] px-6 h-12 rounded text-[#fff]">
+                        Post A Bike
+                    </button>
+                </a>
+            </div>
+
+            <table class="mt-8 w-full text-sm text-left text-gray-500">
+                <thead class="text-lg text-[#fff] uppercase bg-[#757872]">
+                <tr>
+                    <th scope="col" class="px-6 py-3">
+                        ID
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Name
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Model
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Warranty
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Price
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Date Created
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Stock
+                    </th>
+
+                    <th scope="col" class="px-6 py-3">
+                        Actions
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr th:each="bike: ${bikes}" class="bg-white border-b">
+                    <th th:text="${bike.id}" scope="row"
+                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                    </th>
+                    <td th:text="${bike.name}" class="px-6 py-4">
+
+                    </td>
+                    <td th:text="${bike.model}" class="px-6 py-4">
+                    </td>
+                    <td th:text="${bike.warranty_status}" class="px-6 py-4">
+                    </td>
+                    <td th:text="${bike.price}" class="px-6 py-4">
+                    </td>
+                    <td th:text="${bike.date_created}" class="px-6 py-4">
+                    </td>
+                    <td class="px-6 py-4">
+                        0
+                    </td>
+                    <td class="px-6 py-4 flex">
+                        <button class="text-[#757872;] mr-6">
+                            <a th:href="'dashboard/bike/edit?id=' + ${bike.id}" >
+                                EDIT
+                            </a>
+                        </button>
+
+                        <button class="text-[red]">
+                            <a th:href="'/bike/delete/'+${bike.id}" >
+                                DELETE
+                            </a>
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

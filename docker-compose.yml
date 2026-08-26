@@ -1,0 +1,44 @@
+# Local databases for pedal-traditional (AAMF golden path)
+# Usage: podman compose up -d   OR   scripts/pedal-up.sh
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: pedal-postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: redhatpedal
+    ports:
+      - "5432:5432"
+    volumes:
+      - pedal-postgres-data:/var/lib/postgresql/data
+      - ./init/postgres:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d redhatpedal"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  sqlserver:
+  # On arm64 (Apple Silicon) use Azure SQL Edge — MSSQL 2022 segfaults under Podman.
+    image: ${PEDAL_SQLSERVER_IMAGE:-mcr.microsoft.com/mssql/server:2022-latest}
+    container_name: pedal-sqlserver
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: ${PEDAL_MSSQL_SA_PASSWORD:-Admin123!Passw0rd}
+      MSSQL_PID: Developer
+    ports:
+      - "1433:1433"
+    volumes:
+      - pedal-sqlserver-data:/var/opt/mssql
+    healthcheck:
+      test: ["CMD-SHELL", "pidof sqlservr || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 15
+      start_period: 30s
+
+volumes:
+  pedal-postgres-data:
+  pedal-sqlserver-data:
