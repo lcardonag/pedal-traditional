@@ -1,0 +1,9 @@
+{
+  "status": "no_code_change",
+  "remediation_id": "stub-api-java-17-0",
+  "runtime": "goose",
+  "provider": "custom_maas_red_hat",
+  "summary": "Stub remediation references src/main/java/example/Entity.java which does not exist. Repository is Spring Boot 3.x with no javax.persistence/servlet imports requiring jakarta migration.",
+  "coder_notes": "Goose analyzed repo; only javax.sql.DataSource imports remain (JDBC API, not migrated to jakarta). No applicable code edits for this stub remediation.",
+  "completed_at": "2026-08-27T00:15:00Z"
+}
