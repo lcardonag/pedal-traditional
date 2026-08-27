@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "task_id": "coder-pedal-traditional-20260827232145-11852d",
+  "task_id": "coder-pedal-traditional-20260827232544-aaa725",
   "remediation": {
     "id": "configuration-management-0300",
     "title": "Spring datasource properties detected",
