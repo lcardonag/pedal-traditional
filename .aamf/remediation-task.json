@@ -1,0 +1,42 @@
+{
+  "version": "1.0",
+  "task_id": "coder-pedal-traditional-20260827023628-7e1688",
+  "remediation": {
+    "id": "align-java-version-java-21",
+    "title": "Align Maven java.version with target java-21",
+    "description": "Bump pom.xml java.version property to match Strategist target runtime.",
+    "severity": "medium",
+    "category": "config",
+    "status": "pending",
+    "locations": [
+      {
+        "file": "pom.xml"
+      }
+    ],
+    "suggestion": {
+      "summary": "Set java.version to 21",
+      "steps": [
+        "Update pom.xml java.version property"
+      ],
+      "automated": true
+    },
+    "dependencies": [],
+    "affected_modules": [
+      "root"
+    ]
+  },
+  "repository": {
+    "url": "https://github.com/lcardonag/pedal-traditional.git",
+    "ref": "main",
+    "subpath": ""
+  },
+  "task_file": ".aamf/remediation-task.json",
+  "result_file": ".aamf/remediation-result.json",
+  "factory_run_id": "local-tier1-align-java-21",
+  "branch_name": "fix/remediation-align-java-version-java-21",
+  "target_runtime": "java-21",
+  "agent_profile": "coder-java",
+  "runtime": "deterministic",
+  "adapter_name": "bump_java_version",
+  "lightspeed_enrich": false
+}
