@@ -1,0 +1,44 @@
+{
+  "version": "1.0",
+  "task_id": "coder-pedal-traditional-20260827024052-e211ac",
+  "remediation": {
+    "id": "configuration-management-0300",
+    "title": "Spring datasource properties detected",
+    "description": "Spring datasource properties detected",
+    "severity": "medium",
+    "category": "framework",
+    "status": "pending",
+    "locations": [
+      {
+        "file": "src/main/resources/application-aamf.properties",
+        "line_start": 5
+      }
+    ],
+    "suggestion": {
+      "summary": "Review Spring datasource configuration for Java 21 / Spring Boot 3 migration",
+      "steps": [
+        "Review datasource URLs and drivers for target runtime",
+        "Run tests with SPRING_PROFILES_ACTIVE=aamf"
+      ],
+      "automated": false
+    },
+    "dependencies": [],
+    "affected_modules": [
+      "root"
+    ]
+  },
+  "repository": {
+    "url": "https://github.com/lcardonag/pedal-traditional.git",
+    "ref": "main",
+    "subpath": ""
+  },
+  "task_file": ".aamf/remediation-task.json",
+  "result_file": ".aamf/remediation-result.json",
+  "factory_run_id": "mta-pedal-real-q2nqk",
+  "branch_name": "fix/remediation-configuration-management-0300",
+  "target_runtime": "java-21",
+  "agent_profile": "coder-java",
+  "runtime": "goose",
+  "adapter_name": "",
+  "lightspeed_enrich": true
+}
