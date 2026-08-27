@@ -1,0 +1,44 @@
+{
+  "version": "1.0",
+  "task_id": "coder-pedal-traditional-20260827000758-10c218",
+  "remediation": {
+    "id": "stub-api-java-17-0",
+    "title": "javax to jakarta API migration (stub)",
+    "description": "Placeholder API remediation for cost scoring tests.",
+    "severity": "critical",
+    "category": "api",
+    "status": "pending",
+    "locations": [
+      {
+        "file": "src/main/java/example/Entity.java",
+        "line_start": 10
+      }
+    ],
+    "suggestion": {
+      "summary": "Migrate javax.* imports to jakarta.*",
+      "steps": [
+        "Refactor imports",
+        "Run tests"
+      ],
+      "automated": false
+    },
+    "dependencies": [],
+    "affected_modules": [
+      "root"
+    ]
+  },
+  "repository": {
+    "url": "https://github.com/lcardonag/pedal-traditional.git",
+    "ref": "main",
+    "subpath": ""
+  },
+  "task_file": ".aamf/remediation-task.json",
+  "result_file": ".aamf/remediation-result.json",
+  "factory_run_id": "mta-pedal-traditional-20260826220902-4033b3",
+  "branch_name": "fix/remediation-stub-api-java-17-0",
+  "target_runtime": "java-17",
+  "agent_profile": "coder-java",
+  "runtime": "goose",
+  "adapter_name": "",
+  "lightspeed_enrich": false
+}
