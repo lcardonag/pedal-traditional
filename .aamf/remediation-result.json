@@ -1,9 +1,3 @@
 {
-  "status": "applied",
-  "remediation_id": "configuration-management-0300",
-  "runtime": "goose",
-  "provider": "custom_maas_red_hat",
-  "summary": "Added explicit JDBC driver-class-name for customers (PostgreSQL) and employees (SQL Server) datasources in application-aamf.properties per Lightspeed recommendation.",
-  "coder_notes": "Goose read enriched prompt but MAAS gpt-oss-120b exited after streaming malformed tool JSON; factory applied minimal Lightspeed fix manually.",
-  "completed_at": "2026-08-27T03:30:00Z"
+  "status": "no_code_change"
 }
