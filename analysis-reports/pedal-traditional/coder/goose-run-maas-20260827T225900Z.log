@@ -1,0 +1,9 @@
+
+    __( O)>  ● new session · custom_ibm gpt-oss-120b
+   \____)    20260827_67 · /Users/lcardona/Projects/Code/pedal-traditional
+     L L     goose is ready
+
+error: Ran into this error: Authentication error: Authentication failed for https://us-east.rhai.ibm.com/v1/projects/002d4a39-9d40-4c25-a9fa-a603eebdb574/inference/v1/chat/completions. Status: 403 Forbidden. Response: .
+
+Please retry if you think this is a transient or recoverable error.
+
