@@ -1,4 +1,6 @@
 {
-  "status": "no_code_change",
-  "remediation_id": "configuration-management-0300"
+  "status": "applied",
+  "adapter_name": "bump_java_version",
+  "remediation_id": "align-java-version-java-21",
+  "module_root": "/Users/lcardona/Projects/Code/pedal-traditional"
 }
