@@ -1,1 +1,4 @@
-{"status": "no_code_change"}
+{
+  "status": "no_code_change",
+  "remediation_id": "configuration-management-0300"
+}
