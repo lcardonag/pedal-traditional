@@ -1,26 +1,24 @@
 {
   "version": "1.0",
-  "task_id": "coder-pedal-traditional-20260828035617-b2323a",
+  "task_id": "coder-pedal-traditional-20260828041202-0e9513",
   "remediation": {
-    "id": "configuration-management-0300",
-    "title": "Spring datasource properties detected",
-    "description": "Spring datasource properties detected",
+    "id": "align-java-version-java-21",
+    "title": "Align Maven java.version with target java-21",
+    "description": "Bump pom.xml java.version property to match Strategist target runtime.",
     "severity": "medium",
-    "category": "framework",
+    "category": "config",
     "status": "pending",
     "locations": [
       {
-        "file": "src/main/resources/application-aamf.properties",
-        "line_start": 5
+        "file": "pom.xml"
       }
     ],
     "suggestion": {
-      "summary": "Review Spring datasource configuration for Java 21 / Spring Boot 3 migration",
+      "summary": "Set java.version to 21",
       "steps": [
-        "Review datasource URLs and drivers for target runtime",
-        "Run tests with SPRING_PROFILES_ACTIVE=aamf"
+        "Update pom.xml java.version property"
       ],
-      "automated": false
+      "automated": true
     },
     "dependencies": [],
     "affected_modules": [
@@ -29,16 +27,16 @@
   },
   "repository": {
     "url": "https://github.com/lcardonag/pedal-traditional.git",
-    "ref": "main",
+    "ref": "fix/remediation-configuration-management-0300",
     "subpath": ""
   },
   "task_file": ".aamf/remediation-task.json",
   "result_file": ".aamf/remediation-result.json",
-  "factory_run_id": "mta-pedal-real-q2nqk",
-  "branch_name": "fix/remediation-configuration-management-0300",
+  "factory_run_id": "local-m2-java-21-bump",
+  "branch_name": "fix/remediation-m2-java-21-bump-v2",
   "target_runtime": "java-21",
   "agent_profile": "coder-java",
-  "runtime": "goose",
-  "adapter_name": "",
-  "lightspeed_enrich": true
+  "runtime": "deterministic",
+  "adapter_name": "bump_java_version",
+  "lightspeed_enrich": false
 }
